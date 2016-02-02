@@ -62,7 +62,7 @@
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Country Name</label>
                            <div class="col-sm-10">
-                              <input type="text" name="countryName" placeholder="Country Name" class="form-control">
+                              <input type="text" name="countryName" required="required" placeholder="Country Name" class="form-control">
                            </div>
                         </div>
                      </fieldset>
@@ -71,7 +71,7 @@
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Country Description</label>
                            <div class="col-sm-10">
-                              <textarea name="countryDescription" placeholder="Country Description" class="form-control"></textarea>
+                              <textarea name="countryDescription" required="required" placeholder="Country Description" class="form-control"></textarea>
                            </div>
                         </div>
                      </fieldset>

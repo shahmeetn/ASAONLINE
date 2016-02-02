@@ -27,7 +27,7 @@
    <link rel="stylesheet" href="css/bootstrap.css">
    <!-- Vendor CSS-->
    <link rel="stylesheet" href="css/font-awesome.min.css">
-   <link rel="stylesheet" href="css/animate+animo.css">
+   <link rel="stylesheet" href="css/animate+animo.css">x
    <link rel="stylesheet" href="css/csspinner.min.css">
    <!-- START Page Custom CSS-->
    <!-- END Page Custom CSS-->

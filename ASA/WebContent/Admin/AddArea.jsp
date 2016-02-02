@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -28,6 +29,93 @@
    <script src="js/modernizr.js" type="application/javascript"></script>
    <!-- FastClick for mobiles-->
    <script src="js/fastclick.js" type="application/javascript"></script>
+   <script type="text/javascript">
+   function loadCity() 
+  	{
+		var stateId=document.getElementById("stateId");	
+		var xmlhttp1 = new XMLHttpRequest();
+		
+		removeAllCity();
+		
+		xmlhttp1.onreadystatechange = function()
+		{
+			if (xmlhttp1.readyState == 4) 
+			{
+				var jsonArray = JSON.parse(xmlhttp1.responseText);
+				alert(JSON.stringify(jsonArray));
+				for(i=0; i<jsonArray.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					alert("loop"+i);
+					createOption.value=jsonArray[i].cityId;
+					createOption.text=jsonArray[i].cityName;
+					document.areaForm.cityName.options.add(createOption);
+				}
+			}
+			
+		}	
+		xmlhttp1.open("get","${pageContext.request.contextPath}/areaController?flag=loadCity&stateId="+stateId.value, true)
+		xmlhttp1.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+   
+   function removeAllCity() {
+  		var removeCity=document.areaForm.cityName.options.length;
+		for(i=removeCity ; i>0 ; i-- )
+		{
+			document.areaForm.cityName.remove(i);
+		}
+	}
+   
+   function loadState() 
+   	{
+		var countryId=document.getElementById("countryId");	
+		var xmlhttp = new XMLHttpRequest();
+		
+		removeAllState();
+		
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState == 4) 
+			{
+				var jsonArray = JSON.parse(xmlhttp.responseText);
+				alert(JSON.stringify(jsonArray));
+				for(var i=0; i<jsonArray.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					
+					createOption.value=jsonArray[i].stateId;
+					createOption.text=jsonArray[i].stateName;
+					document.areaForm.stateId.options.add(createOption);
+				}
+			}
+		}
+		
+		xmlhttp.open("get","${pageContext.request.contextPath}/areaController?flag=loadState&countryId="+countryId.value, true)
+		xmlhttp.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+   
+   	function removeAllState() {
+   		var removeState=document.areaForm.stateId.options.length;
+		for(i=removeState ; i>0 ; i-- )
+		{
+			document.areaForm.stateId.remove(i);
+		}
+	}
+   </script>
 </head>
 
 <body>
@@ -57,34 +145,48 @@
             <div class="panel panel-default">
                <div class="panel-heading">Add Area</div>
                <div class="panel-body">
-                  <form method="get" action="/" class="form-horizontal">
+                  <form method="post" action="<%=request.getContextPath()%>/areaController" name="areaForm" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label">Select Country</label>
+							<div class="col-sm-10">
+                        		<select class="form-control m-b" name="countryName" onchange="loadState()" id="countryId">
+                        			<option value="0"> Select Country</option>
+                        			<c:forEach items="${sessionScope.countryList }" var="i">
+                        				<option class="default" value="${i.cid}">${i.countryname}</option>
+                        			</c:forEach>
+                       			</select>
+                     		</div>
+                      	</div>
+                     </fieldset>
                      
                      <fieldset>
                         <div class="form-group">
-                           <label class="col-sm-2 control-label">Select City</label>
-                            &nbsp; &nbsp; &nbsp;<div class="btn-group">
-                             <button class="btn btn-default dropdown-toggle" data-play="fadeIn" data-toggle="dropdown">Kai b<b class="caret"></b>
-                             </button>
-                        <ul class="dropdown-menu" style="">
-                           <li><a href="javascript:void(0);">City 1</a>
-                           </li>
-                           <li><a href="javascript:void(0);">City 2</a>
-                           </li>
-                           <li><a href="javascript:void(0);">City 3</a>
-                           </li>
-                           <li><a href="javascript:void(0);">City 4</a>
-                           </li>
-                        </ul>
-                     </div>
-                      </div>
+                        	<label class="col-sm-2 control-label">Select State</label>
+							<div class="col-sm-10">
+                        		<select class="form-control m-b" name="stateId" onchange="loadCity()" id="stateId">
+                        			<option value="0"> Select State</option>
+                        		</select>
+                     		</div>
+                      	</div>
                      </fieldset>
                      
+                     <fieldset>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label">Select City</label>
+							<div class="col-sm-10">
+                        		<select class="form-control m-b" name="cityName" id="cityName">
+                        			<option value="0"> Select City</option>
+                        		</select>
+                     		</div>
+                      	</div>
+                     </fieldset>
                      
                      <fieldset>
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Area Name</label>
                            <div class="col-sm-10">
-                              <input type="text" placeholder="Area Name" class="form-control">
+                              <input type="text" name="areaName" required="required" placeholder="Area Name" class="form-control">
                            </div>
                         </div>
                      </fieldset>
@@ -93,7 +195,7 @@
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Area Description</label>
                            <div class="col-sm-10">
-                              <textarea  placeholder="Area Description" class="form-control"></textarea>
+                              <textarea name="areaDescription" required="required"  placeholder="Area Description" class="form-control"></textarea>
                            </div>
                         </div>
                      </fieldset>
@@ -101,20 +203,14 @@
                      <fieldset>
                         <div class="form-group">
                            <div class="col-sm-6 col-sm-offset-3">
-                              <input  type="submit" class="btn btn-primary" value="Add"/>
                            
+                              <input  type="submit" id="reg" class="btn btn-primary" value="Add"/>
+                              <input type="hidden" name="flag" value="insertArea" />
                               <input  type="reset" class="btn btn-default" value="Cancel"/>
                            </div>
                         </div>
-                     </fieldset>
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                  </form>
+                     </fieldset>      
+         </form>
                </div>
             </div>
             <!-- END panel-->

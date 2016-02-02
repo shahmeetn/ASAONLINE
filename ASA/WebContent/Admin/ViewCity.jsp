@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -66,10 +67,32 @@
                                  <th  class="sort-alpha">City Name</th>
                                  <th>City Description</th>
                                  <th>State Of City</th>
-                                 
+   								 <th>Action</th>                              
                               </tr>
                            </thead>
-                           
+                             <tbody>
+              
+              <c:forEach items="${sessionScope.cityList}" var="i">
+			<tr>
+				<td>${i.cityId}</td>
+				<td>${i.cityName}</td>
+				<td>${i.cityDescription}</td>
+				<td>${i.sv.stateName}</td>
+				<td>
+				<div class="btn-group mb-sm"><button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" type="button" >Action<span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<%=request.getContextPath()%>/cityController?flag=editCity&cityId=${i.cityId}">Edit</a></li>
+				<li><a href="">DELETE</a></li>
+				</ul>
+				</div>
+				</td>
+			</tr>
+			
+			
+		</c:forEach>
+              <c:remove var="cityList" scope="session" />
+              
+              </tbody>
                         </table>
                      </div>
                   </div>

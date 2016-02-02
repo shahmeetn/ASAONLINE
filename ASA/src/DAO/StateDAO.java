@@ -47,4 +47,68 @@ public class StateDAO {
 		 }
 	}
 
+	public List searchState(StateVO sv) {
+		// TODO Auto-generated method stub
+		List ls = null;
+		try
+		{
+			SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+			Session session =sessionFactory.openSession();
+			Query w=session.createQuery("from StateVO");
+			ls=w.list();
+			System.out.println("state list size ::"+ls);
+		}
+		catch(Exception z)
+		{
+			z.printStackTrace();
+		}
+		return ls;
+		
+	}
+
+	public List editState(StateVO sv) {
+		// TODO Auto-generated method stub
+		List ls=null;
+		try
+		{
+			SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
+			
+			Session session=sessionFactory.openSession();
+			
+			Transaction tr=session.beginTransaction();
+			
+			Query w=session.createQuery("from StateVO where stateId='"+sv.getStateId()+"'");
+			
+			ls=w.list();
+			
+			tr.commit();
+		}
+		catch(Exception z)
+		{
+			z.printStackTrace();
+		}
+		return ls;
+	}
+
+	public void updateState(StateVO sv) {
+		// TODO Auto-generated method stub
+		try
+		{
+			SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
+			
+			Session session=sessionFactory.openSession();
+			
+			Transaction tr=session.beginTransaction();
+			
+			session.saveOrUpdate(sv);
+			
+		
+			tr.commit();
+		}
+		catch(Exception z)
+		{
+			z.printStackTrace();
+		}
+	}
+
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -68,7 +69,17 @@
                                  <th>Category Of Service</th>
                               </tr>
                            </thead>
-                           
+                             <tbody>
+                           <c:forEach items="${sessionScope.servicesList}" var="i">
+			<tr>
+				<td>${i.serviceId}</td>
+				<td>${i.serviceName}</td>
+				<td>${i.serviceDescription}</td>	
+			</tr>
+		</c:forEach>
+              <c:remove var="servicesList" scope="session" />
+          
+                           </tbody>
                         </table>
                      </div>
                   </div>

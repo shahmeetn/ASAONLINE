@@ -29,6 +29,49 @@
    <script src="js/modernizr.js" type="application/javascript"></script>
    <!-- FastClick for mobiles-->
    <script src="js/fastclick.js" type="application/javascript"></script>
+   <script type="text/javascript">
+   	function loadState() 
+   	{
+		var countryId=document.getElementById("countryId");	
+		var xmlhttp = new XMLHttpRequest();
+		
+		removeAllState();
+		
+		xmlhttp.onreadystatechange = function()
+		{
+			if (xmlhttp.readyState == 4) 
+			{
+				var jsonArray = JSON.parse(xmlhttp.responseText);
+				alert(JSON.stringify(jsonArray));
+				for(var i=0; i<jsonArray.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					
+					createOption.value=jsonArray[i].stateId;
+					createOption.text=jsonArray[i].stateName;
+					document.cityForm.stateid.options.add(createOption);
+				}
+			}
+		}
+		
+		xmlhttp.open("get","${pageContext.request.contextPath}/cityController?flag=loadState&countryId="+countryId.value, true)
+		xmlhttp.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+   	function removeAllState() {
+   		var removeState=document.cityForm.stateid.options.length;
+		for(i=removeState ; i>0 ; i-- )
+		{
+			document.cityForm.stateid.remove(i);
+		}
+	}
+   </script>
 </head>
 
 <body>
@@ -60,27 +103,32 @@
                <div class="panel-body">
                
                
-               <form method="post" action="<%=request.getContextPath()%>/cityController" class="form-horizontal">
+               <form method="post" action="<%=request.getContextPath()%>/cityController" name="cityForm" class="form-horizontal">
                      
                       <fieldset>
                         <div class="form-group">
-
-                            <!-- <div class="btn-group">
-                             <button class="btn btn-default dropdown-toggle" data-play="fadeIn" data-toggle="dropdown">Kai b<b class="caret"></b>
-                             </button> -->
-                             <label class="col-sm-2 control-label">Select State</label>
+                             <label class="col-sm-2 control-label">Select Country</label>
 						<div class="col-sm-10">
-                        <select class="form-control m-b" name="stateName">
-                        <!-- <option value="0"> Select State</option>
-                         -->	<c:forEach items="${sessionScope.stateList }" var="i">
-                        		<option class="default" value="${i.stateId}">${i.stateName}</option>
+                        <select class="form-control m-b" id="countryId" name="countryId" onchange="loadState()" >
+                        <option>Choose One</option>
+                         <c:forEach items="${sessionScope.countryList }" var="i">
+                        		<option class="default" value="${i.cid}">${i.countryname}</option>
                         	</c:forEach>
                         </select>
-                    
                      </div>
                       </div>
                      </fieldset>
                      
+                      <fieldset>
+                        <div class="form-group">
+                             <label class="col-sm-2 control-label">Select State</label>
+						<div class="col-sm-10">
+                        <select class="form-control m-b" name="stateid" id="stateid">
+                        <option value="">Choose One</option>
+                        </select>
+                     </div>
+                      </div>
+                     </fieldset>
                      
                      <fieldset>
                         <div class="form-group">

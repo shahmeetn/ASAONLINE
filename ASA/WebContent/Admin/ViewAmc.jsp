@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -64,11 +65,22 @@
                               <tr>
                                  <th>No.</th>
                                  <th  class="sort-alpha">AMC Name</th>
-                                 <th>AMC Description</th>
-                                 
+                                 <th>AMC Price</th>
+                                 <th>AMC Description</th>    
                               </tr>
                            </thead>
-                           
+                           <tbody>
+             				<c:forEach items="${sessionScope.AmcList}" var="i">
+								<tr>
+									<td>${i.amcid}</td>
+									<td>${i.amctitle}</td>
+									<td>${i.amcprice}</td>
+									<td>${i.amcdesc}</td>
+									
+								</tr>
+							</c:forEach>
+             				 <c:remove var="cityList" scope="session" /> 
+              			</tbody>
                         </table>
                      </div>
                   </div>

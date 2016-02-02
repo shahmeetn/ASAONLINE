@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -57,32 +58,33 @@
             <div class="panel panel-default">
                <div class="panel-heading">Add Service</div>
                <div class="panel-body">
-                  <form method="get" action="/" class="form-horizontal">
+                 <form method="post" action="<%=request.getContextPath()%>/serviceController" class="form-horizontal">
                      
-                     <fieldset>
-                     <div class="form-group">
-                           <label class="col-sm-2 control-label">Select Category</label>
-                            &nbsp; &nbsp; &nbsp;<div class="btn-group">
+                      <fieldset>
+                        <div class="form-group">
+
+                            <!-- <div class="btn-group">
                              <button class="btn btn-default dropdown-toggle" data-play="fadeIn" data-toggle="dropdown">Kai b<b class="caret"></b>
-                             </button>
-                        <ul class="dropdown-menu" style="">
-                           <li><a href="javascript:void(0);">India</a>
-                           </li>
-                           <li><a href="javascript:void(0);">US</a>
-                           </li>
-                           <li><a href="javascript:void(0);">UAE</a>
-                           </li>
-                           <li><a href="javascript:void(0);">UK</a>
-                           </li>
-                        </ul>
+                             </button> -->
+                             <label class="col-sm-2 control-label">Select Category</label>
+						<div class="col-sm-10">
+                        <select class="form-control m-b" name="categoryName">
+                        <!-- <option value="0"> Select Country</option>
+                         -->	<c:forEach items="${sessionScope.categoryList}" var="i">
+                        		<option class="default" value="${i.vcid}">${i.category}</option>
+                        	</c:forEach>
+                        </select>
+                    
                      </div>
                       </div>
                      </fieldset>
+                     
+                     
                      <fieldset>
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Service Name</label>
                            <div class="col-sm-10">
-                              <input type="text" placeholder="Service Name" class="form-control">
+                              <input type="text" name="serviceName" required="required" placeholder="Service Name" class="form-control">
                            </div>
                         </div>
                      </fieldset>
@@ -91,7 +93,7 @@
                         <div class="form-group">
                            <label class="col-sm-2 control-label">Service Description</label>
                            <div class="col-sm-10">
-                              <textarea  placeholder="Service Description" class="form-control"></textarea>
+                              <textarea name="serviceDescription" required="required"  placeholder="Service Description" class="form-control"></textarea>
                            </div>
                         </div>
                      </fieldset>
@@ -99,19 +101,13 @@
                      <fieldset>
                         <div class="form-group">
                            <div class="col-sm-6 col-sm-offset-3">
-                              <input  type="submit" class="btn btn-primary" value="Add"/>
                            
+                              <input  type="submit" id="reg" class="btn btn-primary" value="Add"/>
+                              <input type="hidden" name="flag" value="insertService" />
                               <input  type="reset" class="btn btn-default" value="Cancel"/>
                            </div>
                         </div>
-                     </fieldset>
-                     
-                     
-                     
-                     
-                     
-                     
-                     
+                     </fieldset>      
                   </form>
                </div>
             </div>

@@ -96,8 +96,8 @@
                   <a href="javascript:void(0);" class="navbar-brand"></a> </div>
                 <div id="navbar-collapse-1" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
-                    <li><a href="home.html">HOME</a></li>
-                    <li><a href="vehicle-listings.html">VEHICLE LISTINGS</a> </li>
+                    <li><a href="home.jsp">HOME</a></li>
+                    <li><a href="service.jsp">VEHICLE LISTINGS</a> </li>
                     <li><a href="car-details.html">CAR DETAILS</a></li>
                     <li class="dropdown" ><a href="news.html">NEWS</a>
                       <ul  class="dropdown-menu">

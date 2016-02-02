@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-ie">
 <!--<![endif]-->
@@ -69,6 +70,33 @@
                                  
                               </tr>
                            </thead>
+                           <tbody>
+                           <c:forEach items="${sessionScope.areaList}" var="i">
+			<tr>
+				<td>${i.areaID}</td>
+				<td>${i.areaName}</td>
+				<td>${i.areaDescription}</td>
+				<td>${i.cv.cityName}</td>
+				<td>
+				<div class="btn-group mb-sm"><button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" type="button" >Action<span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<%=request.getContextPath()%>/areaController?flag=editArea&areaId=${i.areaID}">Edit</a></li>
+				<li><a href="">DELETE</a></li>
+				</ul>
+				</div>
+				</td>
+			</tr>
+			
+			
+		</c:forEach>
+              <c:remove var="areaList" scope="session" />
+              
+              
+                           
+                           
+                           
+                           
+                           </tbody>
                            
                         </table>
                      </div>

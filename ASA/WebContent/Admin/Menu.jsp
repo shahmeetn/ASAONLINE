@@ -4,7 +4,7 @@
             <ul class="nav">
                <!-- START Menu-->
                <li class="nav-heading">Main Menu</li>
-               <li class="active">
+               <li>
                   <a href="Index.jsp" title="Dashboard" data-toggle="" class="has-submenu">
                      <em class="fa fa-dot-circle-o"></em>
                      <!--  <div class="label label-primary pull-right">10</div> -->
@@ -47,7 +47,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="ViewAmc.jsp" title="View AMC" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/AmcController?flag=searchAmc" title="View AMC" data-toggle="" class="no-submenu">
                            <span class="item-text">View AMC</span>
                         </a>
                      </li>
@@ -63,32 +63,49 @@
                   <!-- START SubMenu item-->
                   <ul class="nav collapse ">
                      <li>
-                        <a href="AddVehService.jsp" title="Add Services" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/serviceController?flag=searchCategory" title="Add Services" data-toggle="" class="no-submenu">
                            <span class="item-text">Add Services</span>
                         </a>
                      </li>
                      <li>
-                        <a href="ViewVehService.jsp" title="View Services" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/serviceController?flag=searchServices" title="View Services" data-toggle="" class="no-submenu">
                            <span class="item-text">View Services</span>
                         </a>
                      </li>
                   </ul>
                   <!-- END SubMenu item-->
                </li>
+           
                <li>
-                  <a href="ManageServiceBills.jsp" title="AMC" data-toggle="collapse-next" class="has-submenu">
+                  <a href="ManageServiceBills.jsp" title="Manage Service Bills" data-toggle="collapse-next" class="no-submenu">
                      <em class="fa fa-cogs"></em>
                      <span class="item-text">Manage Service Bills</span>
                   </a>
                 </li>
-                <li>
-                  <a href="ManagePickup.jsp" title="AMC" data-toggle="collapse-next" class="has-submenu">
+                
+               <li>
+                  <a href="#" title="Pickup" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-car"></em>
-                     <span class="item-text">Manage Pickup/drop</span>
+                     <span class="item-text">Manage Pickup</span>
                   </a>
-                </li>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse ">
+                     <li>
+                        <a href="<%=request.getContextPath()%>/pickupController?flag=insertPickup" title="Add Pickup" data-toggle="" class="no-submenu">
+                           <span class="item-text">Add Pickup/Drop</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="<%=request.getContextPath()%>/pickupController?flag=searchPickup" title="Search Pickup" data-toggle="" class="no-submenu">
+                           <span class="item-text">View Pickup/Drop</span>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
+                
                   <li>
-                  <a href="#" title="AMC" data-toggle="collapse-next" class="has-submenu">
+                  <a href="#" title="Manage Category" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-pencil-square-o"></em>
                      <span class="item-text">Manage Category</span>
                   </a>
@@ -100,7 +117,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="ViewVehCat.jsp" title="View Vehicle Category" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/VehicleCategoryController?flag=searchVehCategory" title="View Vehicle Category" data-toggle="" class="no-submenu">
                            <span class="item-text">View Vehicle Category</span>
                         </a>
                      </li>
@@ -116,19 +133,38 @@
                   <!-- START SubMenu item-->
                   <ul class="nav collapse ">
                      <li>
-                        <a href="AddVehCom.jsp" title="Add Vehicle Company" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/companyController?flag=searchCategory" title="Add Vehicle Company" data-toggle="" class="no-submenu">
                            <span class="item-text">Add Vehicle Company</span>
                         </a>
                      </li>
                      <li>
-                        <a href="ViewVehCom.jsp" title="View Vehicle Company" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/companyController?flag=searchCompany" title="View Vehicle Company" data-toggle="" class="no-submenu">
                            <span class="item-text">View Vehicle Company</span>
                         </a>
                      </li>
                   </ul>
                   <!-- END SubMenu item-->
                </li>
-               
+               <li>
+                  <a href="#" title="AMC" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-sitemap"></em>
+                     <span class="item-text">Manage Model</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse ">
+                     <li>
+                        <a href="<%=request.getContextPath()%>/modelController?flag=searchCompany" title="Add Vehicle model" data-toggle="" class="no-submenu">
+                           <span class="item-text">Add Vehicle Model</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="<%=request.getContextPath()%>/modelController?flag=searchModel" title="View Vehicle Model" data-toggle="" class="no-submenu">
+                           <span class="item-text">View Vehicle Model</span>
+                        </a>
+                     </li>
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
                <li>
                   <a href="Country" title="Country" data-toggle="collapse-next" class="has-submenu">
                      <em class="fa fa-globe"></em>
@@ -143,7 +179,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="ViewCountry.jsp" title="View Country" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/CountryController?flag=searchCountry" title="View Country" data-toggle="" class="no-submenu">
                            <span class="item-text">View Country</span>
                         </a>
                      </li>
@@ -164,7 +200,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="ViewState.jsp" title="View State" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/StateController?flag=searchState" title="View State" data-toggle="" class="no-submenu">
                            <span class="item-text">View State</span>
                         </a>
                      </li>
@@ -180,12 +216,12 @@
                   <!-- START SubMenu item-->
                   <ul class="nav collapse ">
                      <li>
-                        <a href="<%=request.getContextPath()%>/cityController?flag=searchState" title="Add City" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/cityController?flag=searchCountry" title="Add City" data-toggle="" class="no-submenu">
                            <span class="item-text">Add City</span>
                         </a>
                      </li>
                      <li>
-                        <a href="ViewCity.jsp" title="View City" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/cityController?flag=searchCity" title="View City" data-toggle="" class="no-submenu">
                            <span class="item-text">View City</span>
                         </a>
                      </li>
@@ -201,12 +237,12 @@
                   <!-- START SubMenu item-->
                   <ul class="nav collapse ">
                      <li>
-                        <a href="<%=request.getContextPath() %>/areaController?flag=searchCity" title="Add Area" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/areaController?flag=searchCountry" title="Add Area" data-toggle="" class="no-submenu">
                            <span class="item-text">Add Area</span>
                         </a>
                      </li>
                      <li>
-                        <a href="ViewArea.jsp" title="View Area" data-toggle="" class="no-submenu">
+                        <a href="<%=request.getContextPath()%>/areaController?flag=searchArea" title="View Area" data-toggle="" class="no-submenu">
                            <span class="item-text">View Area</span>
                         </a>
                      </li>
