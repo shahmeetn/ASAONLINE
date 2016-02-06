@@ -67,6 +67,7 @@
                                  <th  class="sort-alpha">Company Name</th>
                                  <th>Company Description</th>
                                  <th>Category Of Company</th>
+                                 <th>Action</th>
                                  
                               </tr>
                            </thead>
@@ -78,6 +79,14 @@
 				<td>${i.companyName}</td>
 				<td>${i.companyDescription}</td>
 				<td>${i.vc.category}</td>
+				<td>
+				<div class="btn-group mb-sm"><button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" type="button" >Action<span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<%=request.getContextPath()%>/companyController?flag=editCompany&companyId=${i.comid}">Edit</a></li>
+				<li><a href="">DELETE</a></li>
+				</ul>
+				</div>
+				</td>
 				
 			</tr>
 			

@@ -66,7 +66,6 @@ public class cityController extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int countryId=Integer.parseInt(request.getParameter("countryId"));
-		
 		CountryVO countryVo=new CountryVO();
 		countryVo.setCid(countryId);
 		cityDAO cityDao = new cityDAO();

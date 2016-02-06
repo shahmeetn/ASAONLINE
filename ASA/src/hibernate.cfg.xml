@@ -23,5 +23,7 @@
 		<mapping resource="VO/serviceVO.hbm.xml" />
 		<mapping resource="VO/companyVO.hbm.xml" />
 		<mapping resource="VO/modelVO.hbm.xml" />
+		<mapping resource="VO/regVO.hbm.xml" />
+		<mapping resource="VO/loginVO.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

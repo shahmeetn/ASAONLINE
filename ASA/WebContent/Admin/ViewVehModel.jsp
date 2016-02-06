@@ -67,6 +67,7 @@
                                  <th  class="sort-alpha">Model Name</th>
                                  <th>Model Description</th>
                                  <th>Company Of Model</th>
+                                 <th>Action</th>
                                  
                               </tr>
                            </thead>
@@ -78,7 +79,14 @@
 				<td>${i.modelName}</td>
 				<td>${i.modelDescription}</td>
 				<td>${i.cv.companyName}</td>
-				
+				<td>
+				<div class="btn-group mb-sm"><button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" type="button" >Action<span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<%=request.getContextPath()%>/modelController?flag=editModel&modelId=${i.modelid}">Edit</a></li>
+				<li><a href="">DELETE</a></li>
+				</ul>
+				</div>
+				</td>				
 			</tr>
 			
 			

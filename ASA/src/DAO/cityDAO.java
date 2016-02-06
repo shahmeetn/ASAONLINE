@@ -135,5 +135,4 @@ public class cityDAO {
 		}
 		return ls;
 	}
-
 }

@@ -66,6 +66,8 @@
                                  <th>ID</th>
                                  <th  class="sort-alpha">Category Name</th>
                                  <th>Category Description</th>
+                                 <th>Action</th>
+                                 
                                  
                               </tr>
                            </thead>
@@ -75,8 +77,14 @@
 				<td>${i.vcid}</td>
 				<td>${i.category}</td>
 				<td>${i.categorydescription}</td>
-				
-				
+				<td>
+				<div class="btn-group mb-sm"><button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" type="button" >Action<span class="caret"></span></button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="<%=request.getContextPath()%>/VehicleCategoryController?flag=editCategory&categoryId=${i.vcid}">Edit</a></li>
+				<li><a href="">DELETE</a></li>
+				</ul>
+				</div>
+				</td>
 			</tr>
 			
 			

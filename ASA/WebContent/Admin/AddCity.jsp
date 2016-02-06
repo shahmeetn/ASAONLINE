@@ -108,26 +108,26 @@
                       <fieldset>
                         <div class="form-group">
                              <label class="col-sm-2 control-label">Select Country</label>
-						<div class="col-sm-10">
-                        <select class="form-control m-b" id="countryId" name="countryId" onchange="loadState()" >
-                        <option>Choose One</option>
-                         <c:forEach items="${sessionScope.countryList }" var="i">
-                        		<option class="default" value="${i.cid}">${i.countryname}</option>
-                        	</c:forEach>
-                        </select>
-                     </div>
-                      </div>
+								<div class="col-sm-10">
+                        			<select class="form-control m-b" id="countryId" name="countryId" onchange="loadState()" >
+                        				<option>Choose One</option>
+                         					<c:forEach items="${sessionScope.countryList }" var="i">
+                        						<option class="default" value="${i.cid}">${i.countryname}</option>
+                        					</c:forEach>
+                        			</select>
+                     			</div>
+                        </div>
                      </fieldset>
                      
                       <fieldset>
                         <div class="form-group">
                              <label class="col-sm-2 control-label">Select State</label>
-						<div class="col-sm-10">
-                        <select class="form-control m-b" name="stateid" id="stateid">
-                        <option value="">Choose One</option>
-                        </select>
-                     </div>
-                      </div>
+							<div class="col-sm-10">
+                        		<select class="form-control m-b" name="stateid" id="stateid">
+                        			<option value="">Choose One</option>
+                        		</select>
+                     		</div>
+                        </div>
                      </fieldset>
                      
                      <fieldset>
@@ -150,8 +150,7 @@
                      
                      <fieldset>
                         <div class="form-group">
-                           <div class="col-sm-6 col-sm-offset-3">
-                           
+                           <div class="col-sm-6 col-sm-offset-3">   
                               <input  type="submit" id="reg" class="btn btn-primary" value="Add"/>
                               <input type="hidden" name="flag" value="insertCity" />
                               <input  type="reset" class="btn btn-default" value="Cancel"/>
