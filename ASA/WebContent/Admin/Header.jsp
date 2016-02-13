@@ -246,7 +246,7 @@
                      </li>
                      <li><a href="#">Messages<div class="label label-danger pull-right">10</div></a>
                      </li>
-                     <li><a href="#">Logout</a>
+                     <li><a href="logout.html?flag=logout">Logout</a>
                      </li>
                   </ul>
                   <!-- END Dropdown menu-->
